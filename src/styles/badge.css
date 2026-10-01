@@ -1,0 +1,26 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  border-radius: 9999px;
+  font: 600 0.75rem/normal var(--font-family);
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.badge-default {
+  background-color: var(--tint-white);
+  color: var(--text-primary);
+}
+.badge-red {
+  background-color: var(--tint-red);
+  color: var(--color-red);
+}
+
+.badge-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
