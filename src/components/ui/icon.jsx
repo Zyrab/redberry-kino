@@ -27,5 +27,5 @@ export default function Icon({ name, className = "" }) {
 
   if (!SvgComponent) return null;
 
-  return <SvgComponent className={className} />;
+  return <SvgComponent className={className} aria-hidden="true" focusable="false" />;
 }

@@ -1,12 +1,12 @@
 import "../../styles/button.css";
 import Icon from "./icon";
 
-export default function Button({ children, variant = "primary", leftIcon, rightIcon, className = "", ...props }) {
+export default function Button({ children, variant = "primary", leftIcon, rightIcon, type = "button", className = "", ...props }) {
   return (
-    <button className={`btn btn-${variant} ${className}`} {...props}>
-      {leftIcon && <Icon name={leftIcon} className="btn-icon" />}
+    <button type={type} className={`btn btn-${variant} ${className}`} {...props}>
+      {leftIcon && <Icon name={leftIcon} />}
       {children}
-      {rightIcon && <Icon name={rightIcon} className="btn-icon" />}
+      {rightIcon && <Icon name={rightIcon} />}
     </button>
   );
 }

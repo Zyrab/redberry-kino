@@ -64,9 +64,3 @@
 .btn-ghost:hover {
   background-color: var(--tint-white);
 }
-
-.btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
