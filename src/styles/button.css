@@ -12,12 +12,6 @@
   text-decoration: none;
 }
 
-.btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -64,8 +58,15 @@
   color: var(--text-primary);
   font: 400 0.75rem/1.3 var(--font-family);
   padding: var(--space-md);
-  border: 1px solid var(--text-secondary);
+  border-bottom: 1px solid var(--bg-rised);
+  border-radius: 0;
 }
 .btn-ghost:hover {
   background-color: var(--tint-white);
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
