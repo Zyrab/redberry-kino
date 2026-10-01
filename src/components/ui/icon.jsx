@@ -5,6 +5,7 @@ import checkIcon from "../../assets/icons/check.svg?react";
 import closeIcon from "../../assets/icons/close.svg?react";
 import errorIcon from "../../assets/icons/error.svg?react";
 import logOutIcon from "../../assets/icons/log_out.svg?react";
+import searchIcon from "../../assets/icons/search.svg?react";
 import ticketIcon from "../../assets/icons/ticket.svg?react";
 import timerIcon from "../../assets/icons/timer.svg?react";
 import userIcon from "../../assets/icons/user.svg?react";
@@ -17,6 +18,7 @@ const iconMap = {
   close: closeIcon,
   error: errorIcon,
   logOut: logOutIcon,
+  search: searchIcon,
   ticket: ticketIcon,
   timer: timerIcon,
   user: userIcon,

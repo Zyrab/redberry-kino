@@ -1,0 +1,39 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.field-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  border: var(--border-default) solid var(--bg-raised);
+  border-radius: var(--radius-md);
+}
+.field-control:hover {
+  background: var(--bg-raised);
+}
+.field-control:focus-within {
+  border-color: var(--text-secondary);
+}
+.field-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+}
+
+.field-error .field-control {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+.field-error .field-label,
+.field-message {
+  color: var(--color-red);
+}
+.field-success .field-control svg {
+  color: var(--color-green);
+}
