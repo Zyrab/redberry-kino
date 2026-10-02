@@ -38,7 +38,7 @@
 .slider-content {
   position: absolute;
   z-index: 1;
-  left: var(--space-lg);
+  left: var(--space-2xl);
   bottom: 96px;
   max-width: 560px;
   display: flex;
@@ -66,8 +66,8 @@
 .slider-controls {
   position: absolute;
   z-index: 2;
-  left: var(--space-lg);
-  right: var(--space-lg);
+  left: var(--space-2xl);
+  right: var(--space-2xl);
   bottom: var(--space-lg);
   display: flex;
   align-items: center;

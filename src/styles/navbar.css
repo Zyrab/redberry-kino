@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-lg);
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--space-lg) var(--space-2xl) var(--space-xl) var(--space-2xl);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.51) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
