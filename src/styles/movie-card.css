@@ -1,0 +1,119 @@
+.movie-card {
+  --shadow-rest: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 4px 24px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-rest);
+  transition:
+    box-shadow 0.25s ease-in-out,
+    width 0.25s ease-in-out;
+}
+
+.movie-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.movie-card-image {
+  display: block;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.movie-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  min-width: 0;
+  flex: 1;
+}
+
+.movie-card-eyebrow {
+  color: var(--color-red);
+}
+
+.movie-card-meta,
+.movie-card-description {
+  color: var(--text-secondary);
+}
+
+.movie-card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  margin-top: var(--space-xs);
+  white-space: nowrap;
+}
+
+.movie-card-small {
+  width: 276px;
+  height: 72px;
+  align-items: center;
+  gap: var(--space-sm);
+  box-shadow: none;
+}
+.movie-card-small:hover {
+  box-shadow: var(--shadow-hover);
+}
+.movie-card-small .movie-card-image {
+  width: 56px;
+  height: 56px;
+}
+.movie-card-small .movie-card-title {
+  text-transform: uppercase;
+}
+
+.movie-card-medium {
+  width: 390px;
+  height: 152px;
+}
+.movie-card-medium .movie-card-image {
+  width: 96px;
+  height: 100%;
+}
+
+.movie-card-big {
+  --big-width: 264px;
+  --big-width-hover: 400px;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  width: var(--big-width);
+  height: 384px;
+}
+.movie-card-big:hover {
+  width: var(--big-width-hover);
+}
+.movie-card-big .movie-card-image {
+  width: 100%;
+  height: 200px;
+}
+.movie-card-big .movie-card-body {
+  gap: var(--space-sm);
+}
+
+.movie-card-big .movie-card-actions {
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.movie-card-big .movie-card-description {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.25s ease-in-out,
+    max-height 0.25s ease-in-out;
+}
+.movie-card-big:hover .movie-card-description {
+  max-height: 4.5em;
+  opacity: 1;
+}
