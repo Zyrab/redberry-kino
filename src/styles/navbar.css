@@ -1,10 +1,15 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-lg);
   padding: var(--space-md) var(--space-lg);
-  background: linear-gradient(to bottom, var(--bg-card), var(--bg-page));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.51) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 .navbar-left {
