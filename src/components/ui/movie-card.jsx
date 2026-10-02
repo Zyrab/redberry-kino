@@ -9,7 +9,7 @@ const textStyles = {
 };
 
 export default function MovieCard({ variant = "medium", data, actions, className = "" }) {
-  const { title, posterUrl, runtimeMinutes, ageRating, genres, releaseDate } = data;
+  const { title, posterUrl, runtimeMinutes, ageRating, genres, releaseDate, synopsis } = data;
   const { title: titleClass, meta: metaClass } = textStyles[variant];
 
   return (
@@ -22,7 +22,7 @@ export default function MovieCard({ variant = "medium", data, actions, className
           {genres[1]?.name} · {runtimeMinutes} min
         </p>
         {ageRating && <Badge variant="red" label={ageRating.code} />}
-        {variant === "big" && ageRating.description && <p className="movie-card-description text-body-s">{ageRating.description}</p>}
+        {variant === "big" && synopsis && <p className="movie-card-description text-body-s">{synopsis}</p>}
         {actions && <div className="movie-card-actions">{actions}</div>}
       </div>
     </article>

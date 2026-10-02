@@ -7,28 +7,12 @@ export default function useHomeMovies() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function load() {
-      try {
-        const [nowPlaying, comingSoon, featured] = await Promise.all([
-          api("/movies/now-playing"),
-          api("/movies/coming-soon"),
-          api("/movies/featured"),
-        ]);
-
-        const featuredDetails = await Promise.all(featured.data.map((m) => api(`/movies/${m.slug}`)));
-
-        setData({
-          nowPlaying: nowPlaying.data,
-          comingSoon: comingSoon.data,
-          featured: featuredDetails.map((res) => res.data),
-        });
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
+    Promise.all([api("/movies/now-playing?limit=8"), api("/movies/coming-soon?limit=6"), api("/movies/featured")])
+      .then(([nowPlaying, comingSoon, featured]) => {
+        setData({ nowPlaying: nowPlaying.data, comingSoon: comingSoon.data, featured: featured.data });
+      })
+      .catch(setError)
+      .finally(() => setLoading(false));
   }, []);
 
   return { ...data, loading, error };
