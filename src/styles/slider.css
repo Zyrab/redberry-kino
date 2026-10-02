@@ -1,0 +1,131 @@
+.slider {
+  position: relative;
+  width: 100%;
+  height: 760px;
+  overflow: hidden;
+  background-color: var(--bg-card);
+}
+
+.slider-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.6s ease-in-out,
+    visibility 0s linear 0.6s;
+}
+.slider-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.slider-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slider-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.2) 60%, transparent);
+}
+
+.slider-content {
+  position: absolute;
+  z-index: 1;
+  left: var(--space-lg);
+  bottom: 96px;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  color: #fff;
+}
+.slider-genres {
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--tint-red);
+  color: var(--color-red);
+  border-radius: var(--radius-sm);
+}
+.slider-info,
+.slider-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.slider-actions {
+  margin-top: var(--space-sm);
+}
+
+.slider-controls {
+  position: absolute;
+  z-index: 2;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.slider-progress {
+  display: flex;
+  flex: 1;
+  gap: var(--space-sm);
+}
+.slider-bar {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  padding: 0;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+.slider-bar::before {
+  content: "";
+  position: absolute;
+  inset: -10px 0;
+}
+.slider-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background-color: var(--color-red);
+}
+.slider-bar.is-done::after {
+  width: 100%;
+}
+.slider-bar.is-active::after {
+  animation: slider-fill var(--slider-interval) linear forwards;
+}
+@keyframes slider-fill {
+  to {
+    width: 100%;
+  }
+}
+
+.slider-arrows {
+  display: flex;
+  gap: var(--space-sm);
+}
+.slider-arrow {
+  padding: var(--space-sm);
+  border-radius: 50%;
+  background-color: rgba(7, 12, 28, 0.2);
+  transition: background-color 0.2s ease-in-out;
+}
+.slider-arrow:hover {
+  background-color: var(--bg-page);
+}
+
+.slider-loading {
+  background-color: var(--bg-card);
+}
