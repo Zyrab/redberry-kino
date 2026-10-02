@@ -1,3 +1,5 @@
+import arrowLeftIcon from "../../assets/icons/arrow_left.svg?react";
+import arrowRightIcon from "../../assets/icons/arrow_right.svg?react";
 import arrowIcon from "../../assets/icons/arrow.svg?react";
 import bellIcon from "../../assets/icons/bell.svg?react";
 import calendarIcon from "../../assets/icons/calendar.svg?react";
@@ -11,6 +13,8 @@ import timerIcon from "../../assets/icons/timer.svg?react";
 import userIcon from "../../assets/icons/user.svg?react";
 
 const iconMap = {
+  arrowLeft: arrowLeftIcon,
+  arrowRight: arrowRightIcon,
   arrow: arrowIcon,
   bell: bellIcon,
   calendar: calendarIcon,
