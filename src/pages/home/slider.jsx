@@ -25,7 +25,7 @@ export default function Slider({ featured = [], loading }) {
 
   return (
     <section className="slider" style={{ "--slider-interval": `${INTERVAL}ms` }}>
-      {featured.map(({ id, title, backdropUrl, ageRating, runtimeMinutes, formats, genres, synopsis }, i) => (
+      {featured.map(({ id, slug, title, backdropUrl, ageRating, runtimeMinutes, formats, genres, synopsis }, i) => (
         <article key={id} className={`slider-slide ${i === index ? "is-active" : ""}`} aria-hidden={i !== index}>
           <img className="slider-image" src={backdropUrl} alt="" />
 
@@ -41,10 +41,10 @@ export default function Slider({ featured = [], loading }) {
             </div>
             <p className="slider-description text-body-m">{synopsis}</p>
             <div className="slider-actions">
-              <Button leftIcon="ticket" onClick={() => navigate(`/movies/${id}`)}>
+              <Button leftIcon="ticket" onClick={() => navigate(`/movies/${slug}`)}>
                 Buy Tickets
               </Button>
-              <Button variant="transparent" onClick={() => navigate(`/movies/${id}`)}>
+              <Button variant="transparent" onClick={() => navigate(`/sessions`)}>
                 All sessions
               </Button>
             </div>

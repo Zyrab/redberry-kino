@@ -1,0 +1,33 @@
+.movie-row {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  padding: var(--space-lg) 0;
+  margin: calc(var(--space-lg) * -1) 0;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, #000 calc(100% - 100px), transparent);
+}
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+.home-section {
+  padding: var(--space-xl) var(--space-2xl);
+}
+
+.home-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.home-section-link {
+  color: var(--color-red);
+  text-decoration: none;
+}
+
+.home-divider {
+  border: 0;
+  border-top: 1px solid var(--bg-raised);
+}
