@@ -1,8 +1,12 @@
 import "../../styles/navbar.css";
 import SearchInput from "../ui/search-input";
 import Button from "../ui/button";
+import AccountMenu from "./account-menu";
+
+import { useAuth } from "../../context/auth-context";
 
 export default function Navbar() {
+  const { openAuthModal, loading, user } = useAuth();
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -13,10 +17,16 @@ export default function Navbar() {
       </div>
       <div className="navbar-right">
         <SearchInput />
-        <div className="navbar-actions">
-          <Button>Sign up</Button>
-          <Button variant="secondary">Log in</Button>
-        </div>
+        {loading ? null : user ? (
+          <AccountMenu />
+        ) : (
+          <div className="navbar-actions">
+            <Button onClick={() => openAuthModal("register")}>Sign up</Button>
+            <Button variant="secondary" onClick={() => openAuthModal("login")}>
+              Log in
+            </Button>
+          </div>
+        )}
       </div>
     </nav>
   );

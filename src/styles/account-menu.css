@@ -1,0 +1,122 @@
+.account-menu {
+  position: relative;
+}
+
+.account-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: none;
+  border: 0;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.account-chevron {
+  transition: transform 0.2s ease-in-out;
+}
+.account-chevron.is-open {
+  transform: rotate(-180deg);
+}
+
+.account-avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background-color: var(--bg-raised);
+  border-radius: var(--radius-md);
+}
+.account-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.account-dot {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--bg-page);
+}
+.account-dot.is-complete {
+  background-color: var(--color-green);
+}
+.account-dot.is-incomplete {
+  background-color: var(--color-orange);
+}
+
+.account-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  right: 0;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-sm);
+  width: 302px;
+  background-color: var(--bg-page);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  animation: modal-enter 0.2s ease-out;
+}
+
+.account-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+}
+.account-email {
+  color: var(--text-secondary);
+}
+
+.account-status {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  margin: 0 var(--space-md) var(--space-xs);
+}
+.account-status.is-incomplete {
+  background-color: var(--tint-orange);
+  color: var(--color-orange);
+  .description {
+    color: var(--text-secondary);
+  }
+}
+.account-status.is-complete {
+  display: flex;
+  gap: var(--space-xs);
+  background-color: var(--tint-green);
+  color: var(--color-green);
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-xs);
+  background: none;
+  border: 0;
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.account-item:hover {
+  background-color: var(--bg-card);
+}
+
+.account-divider {
+  border: 0;
+  border-top: 1px solid var(--tint-white);
+}
+.account-logout {
+  color: var(--color-red);
+  border-radius: 0;
+  margin-top: var(--space-xs);
+}
