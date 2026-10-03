@@ -10,6 +10,7 @@ import logOutIcon from "../../assets/icons/log_out.svg?react";
 import searchIcon from "../../assets/icons/search.svg?react";
 import ticketIcon from "../../assets/icons/ticket.svg?react";
 import timerIcon from "../../assets/icons/timer.svg?react";
+import uploadIcon from "../../assets/icons/upload.svg?react";
 import userIcon from "../../assets/icons/user.svg?react";
 
 const iconMap = {
@@ -25,6 +26,7 @@ const iconMap = {
   search: searchIcon,
   ticket: ticketIcon,
   timer: timerIcon,
+  upload: uploadIcon,
   user: userIcon,
 };
 
