@@ -19,6 +19,7 @@
   border-color: var(--text-secondary);
 }
 .field-input {
+  height: var(--space-md);
   flex: 1;
   background: none;
   border: none;
