@@ -1,48 +1,18 @@
-import { useState } from "react";
 import { useAuth } from "../../context/auth-context";
-import { isEmail, MIN_LENGTH, mapApiErrors } from "../../utils/validators";
+import { loginSchema } from "../../utils/validators";
 import Button from "../ui/button";
 import TextInput from "../ui/text-input";
+import useForm from "../../hooks/use-form";
 
 export default function LoginForm() {
   const { login, switchMode } = useAuth();
-  const [values, setValues] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState({});
-  const [submitting, setSubmitting] = useState(false);
-
-  const filled = values.email && values.password;
-  const hasErrors = Object.values(errors).some((error) => error !== undefined);
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setValues((v) => ({ ...v, [name]: value }));
-    setErrors((er) => ({ ...er, [name]: undefined, form: undefined }));
-  }
-
-  function validate() {
-    const next = {};
-    if (!isEmail(values.email)) next.email = "Enter a valid email";
-    if (values.password.length < MIN_LENGTH) next.password = `At least ${MIN_LENGTH} characters`;
-    return next;
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const next = validate();
-    if (Object.keys(next).length) return setErrors(next);
-
-    setSubmitting(true);
-    try {
-      await login(values);
-    } catch (err) {
-      if (err.status === 422 && err.data?.errors) setErrors(mapApiErrors(err.data.errors));
-      else setErrors({ form: err.data?.message || "Something went wrong. Please try again." });
-      setSubmitting(false);
-    }
-  }
+  const { values, fieldError, isFieldValid, handleChange, handleBlur, submitting, formError, submit } = useForm({
+    initial: { email: "", password: "" },
+    schema: loginSchema,
+  });
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit} noValidate>
+    <form className="auth-form" onSubmit={submit((vals) => login(vals))} noValidate>
       <header className="auth-header">
         <h2 className="text-h2">Log in</h2>
         <p className="text-body-s auth-subtitle">Welcome back to Kino XII</p>
@@ -55,8 +25,9 @@ export default function LoginForm() {
         placeholder="example@gmail.com"
         value={values.email}
         onChange={handleChange}
-        error={errors.email}
-        success={isEmail(values.email)}
+        onBlur={handleBlur}
+        error={fieldError("email")}
+        success={isFieldValid("email")}
       />
       <TextInput
         label="Password"
@@ -65,17 +36,18 @@ export default function LoginForm() {
         placeholder="••••••••"
         value={values.password}
         onChange={handleChange}
-        error={errors.password}
-        success={values.password.length >= MIN_LENGTH}
+        onBlur={handleBlur}
+        error={fieldError("password")}
+        success={isFieldValid("password")}
       />
 
-      {errors.form && (
+      {formError && (
         <p className="auth-form-error text-body-s" role="alert">
-          {errors.form}
+          {formError}
         </p>
       )}
 
-      <Button type="submit" disabled={!filled || hasErrors || submitting}>
+      <Button type="submit" disabled={!values.email || !values.password || submitting}>
         Log in
       </Button>
 
