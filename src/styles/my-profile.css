@@ -1,0 +1,56 @@
+.my-profile {
+  margin-top: 120px;
+  padding: 0 var(--space-2xl);
+}
+
+.my-profile-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--bg-card);
+}
+
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 880px;
+}
+
+/* Save button: natural width, pill shape comes from Button */
+.personal-info > button[type="submit"] {
+  align-self: flex-start;
+  margin-top: var(--space-md);
+}
+
+/* Profile status banner */
+.profile-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+.profile-banner.is-incomplete {
+  background-color: var(--tint-orange, rgba(255, 150, 0, 0.1));
+  color: var(--color-orange);
+}
+.profile-banner.is-complete {
+  background-color: var(--tint-green);
+  color: var(--color-green);
+}
+
+/* Age eligibility note under the date of birth */
+.profile-age {
+  margin-top: calc(var(--space-sm) * -1); /* pull it closer to the field above */
+  color: var(--text-secondary);
+}
+
+/* Form-level error and success messages */
+.profile-form-error {
+  color: var(--color-red);
+}
+.profile-saved {
+  color: var(--color-green);
+}
