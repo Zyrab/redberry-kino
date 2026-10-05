@@ -30,7 +30,7 @@ export default function Slider({ featured = [], loading }) {
           <img className="slider-image" src={backdropUrl} alt="" />
 
           <div className="slider-content">
-            <p className="slider-genres text-overline">{genres.map((g) => g.name).join(" · ")}</p>
+            <Badge variant="red" label={genres.map((g) => g.name).join(" · ")} />
             <h2 className="text-display">{title}</h2>
             <div className="slider-info">
               <Badge variant="red" label={ageRating?.code} />

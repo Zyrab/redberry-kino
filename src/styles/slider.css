@@ -47,12 +47,7 @@
   gap: var(--space-sm);
   color: #fff;
 }
-.slider-genres {
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--tint-red);
-  color: var(--color-red);
-  border-radius: var(--radius-sm);
-}
+
 .slider-info,
 .slider-actions {
   display: flex;
