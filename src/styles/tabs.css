@@ -1,0 +1,58 @@
+.tabs {
+  display: flex;
+}
+.tabs-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: none;
+  border: 0;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+.tabs-item:hover,
+.tabs-item.is-active {
+  color: var(--text-primary);
+}
+
+.tabs-profile {
+  gap: var(--space-xl);
+}
+.tabs-profile .tabs-item {
+  padding: var(--space-md) 0;
+  border-bottom: 2px solid transparent;
+}
+.tabs-profile .tabs-item.is-active {
+  border-bottom-color: var(--color-red);
+}
+.tabs-profile .tabs-count {
+  padding: 0 var(--space-xs);
+  border-radius: 999px;
+  background-color: var(--color-red);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.tabs-tickets {
+  align-self: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+}
+.tabs-tickets .tabs-item {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+}
+.tabs-tickets .tabs-item.is-active {
+  background-color: var(--bg-raised);
+}
+.tabs-tickets .tabs-count {
+  color: var(--text-disabled);
+}
+.tabs-tickets .is-active .tabs-count {
+  color: var(--text-primary);
+}
