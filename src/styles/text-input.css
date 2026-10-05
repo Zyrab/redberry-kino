@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  height: 40px;
   padding: var(--space-sm) var(--space-md);
   background: var(--bg-card);
   border: var(--border-default) solid var(--bg-raised);
@@ -34,6 +35,9 @@
 .field-error .field-label,
 .field-message {
   color: var(--color-red);
+}
+.field-info {
+  color: var(--color-secondary);
 }
 .field-success .field-control svg {
   color: var(--color-green);
