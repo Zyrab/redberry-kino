@@ -31,7 +31,7 @@ function Home() {
       await api(`/movies/${movie.slug}/notify`, { method: "POST" });
     } catch (err) {
       setNotified((prev) => ({ ...prev, [movie.slug]: false }));
-      if (err.status === 401) openAuthModal("login");
+      if (err.status === 401) openAuthModal("login", () => handleNotify(movie));
     }
   }
 
