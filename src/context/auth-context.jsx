@@ -8,6 +8,7 @@ export function AuthProvider({ children }) {
   const [modal, setModal] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // if token exists gets current user
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       setLoading(false);
@@ -19,6 +20,7 @@ export function AuthProvider({ children }) {
       .finally(() => setLoading(false));
   }, []);
 
+  // trigered when token expires, shows login modal and removes old token
   useEffect(() => {
     const handleUnauthorized = () => {
       localStorage.removeItem("token");
@@ -30,12 +32,13 @@ export function AuthProvider({ children }) {
     return () => window.removeEventListener("auth-unauthorized", handleUnauthorized);
   }, []);
 
+  // when loged in after protected action, reaplays the action
   function finishAuth({ token, user }) {
     localStorage.setItem("token", token);
     setUser(user);
     const replay = modal?.onSuccess;
     setModal(null);
-    replay?.(); // continue the protected action, no second click
+    replay?.();
   }
 
   async function login(credentials) {
@@ -54,15 +57,15 @@ export function AuthProvider({ children }) {
     setUser(null);
   }
 
-  const openAuthModal = (mode = "login", onSuccess) => {
-    console.log("opened");
-    setModal({ mode, onSuccess });
-  };
+  //  mode = login | register,
+  // onSuccess to navigate on guarded routes or replay an action that requires user loged in
+  const openAuthModal = (mode = "login", onSuccess) => setModal({ mode, onSuccess });
   const closeAuthModal = useCallback(() => setModal(null), []);
   const switchMode = (mode) => setModal((m) => (m ? { ...m, mode } : m));
 
+  const updateUser = setUser;
   return (
-    <AuthContext.Provider value={{ user, loading, modal, login, register, logout, openAuthModal, closeAuthModal, switchMode }}>
+    <AuthContext.Provider value={{ user, updateUser, loading, modal, login, register, logout, openAuthModal, closeAuthModal, switchMode }}>
       {children}
     </AuthContext.Provider>
   );
