@@ -1,7 +1,7 @@
 import "../../styles/text-input.css";
 import Icon from "./icon";
 
-export default function TextInput({ label, error, success, id, className = "", info, ...props }) {
+export default function TextInput({ label, type, error, success, id, className = "", info, ...props }) {
   const state = error ? "error" : success ? "success" : "";
 
   return (
@@ -12,9 +12,10 @@ export default function TextInput({ label, error, success, id, className = "", i
         </label>
       )}
       <div className="field-control">
-        <input id={id} className="field-input text-label-s" aria-invalid={!!error} {...props} />
+        <input id={id} className="field-input text-label-s" aria-invalid={!!error} type={type} {...props} />
         {error && <Icon name="error" />}
         {success && <Icon name="check" />}
+        {type === "date" && <Icon name="calendar" className="field-calendar" />}
       </div>
       {error && <p className="field-message text-label-s">{error}</p>}
       {info && <p className="field-info text-label-s">{info}</p>}

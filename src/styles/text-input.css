@@ -4,25 +4,27 @@
   gap: var(--space-sm);
 }
 .field-control {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  height: 40px;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--bg-card);
-  border: var(--border-default) solid var(--bg-raised);
-  border-radius: var(--radius-md);
 }
-.field-control:hover {
+.field-input:hover {
   background: var(--bg-raised);
+}
+.field-input:disabled {
+  color: var(--text-secondary);
 }
 .field-control:focus-within {
   border-color: var(--text-secondary);
 }
 .field-input {
-  height: var(--space-md);
+  height: 40px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  border: var(--border-default) solid var(--bg-raised);
+  border-radius: var(--radius-md);
   flex: 1;
-  background: none;
   border: none;
   outline: none;
   color: inherit;
@@ -36,9 +38,28 @@
 .field-message {
   color: var(--color-red);
 }
+
 .field-info {
   color: var(--color-secondary);
 }
 .field-success .field-control svg {
   color: var(--color-green);
+}
+.field-control svg {
+  position: absolute;
+  right: var(--space-md);
+  pointer-events: none;
+}
+
+.field-input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.field-error .field-calendar,
+.field-success .field-calendar {
+  display: none;
 }
