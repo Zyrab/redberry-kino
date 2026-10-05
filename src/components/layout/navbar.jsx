@@ -1,9 +1,10 @@
 import "../../styles/navbar.css";
-import SearchInput from "../ui/search-input";
+import SearchInput from "../search-input/search-input";
 import Button from "../ui/button";
 import AccountMenu from "./account-menu";
 
 import { useAuth } from "../../context/auth-context";
+import { Link } from "react-router";
 
 export default function Navbar() {
   const { openAuthModal, loading, user } = useAuth();
@@ -11,9 +12,13 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <h1 className="text-h1 navbar-logo">
-          KINO <span>XII</span>
+          <Link to="/">
+            KINO <span>XII</span>
+          </Link>
         </h1>
-        <p className="text-overline">SESSIONS</p>
+        <Link className="text-overline navbar-link" to="/sessions">
+          SESSIONS
+        </Link>
       </div>
       <div className="navbar-right">
         <SearchInput />

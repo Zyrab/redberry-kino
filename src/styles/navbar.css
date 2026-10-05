@@ -22,14 +22,18 @@
   color: var(--color-red);
 }
 
+.navbar-logo a {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar-link {
+  text-decoration: none;
+  color: inherit;
+}
 .navbar-right {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-}
-
-.navbar-right .search {
-  width: 280px;
 }
 
 .navbar-actions {
