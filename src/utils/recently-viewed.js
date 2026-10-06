@@ -11,8 +11,8 @@ export function getRecentlyViewed() {
 }
 
 export function addRecentlyViewed(movie) {
-  const { id, title, posterUrl, runtimeMinutes, ageRating, genres } = movie;
-  const entry = { id, title, posterUrl, runtimeMinutes, ageRating, genres };
+  const { id, title, slug, posterUrl, runtimeMinutes, ageRating, genres } = movie;
+  const entry = { id, title, slug, posterUrl, runtimeMinutes, ageRating, genres };
   const next = [entry, ...getRecentlyViewed().filter((m) => m.id !== id)].slice(0, MAX);
   try {
     localStorage.setItem(KEY, JSON.stringify(next));
