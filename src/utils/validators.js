@@ -1,3 +1,5 @@
+import { toISODate } from "./dates";
+
 export const MIN_LENGTH = 3;
 export const NAME_MAX = 50;
 export const MIN_AGE = 12;
@@ -45,9 +47,7 @@ export function mapApiErrors(errors = {}) {
 
 export const normalizeMobile = (v) => String(v ?? "").replace(/\s/g, "");
 
-const pad = (n) => String(n).padStart(2, "0");
-export const toISO = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-export const todayISO = () => toISO(new Date());
+export const todayISO = () => toISODate(new Date());
 
 /**
  * Whole years between an ISO date (YYYY-MM-DD) and today.
