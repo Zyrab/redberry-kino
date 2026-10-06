@@ -40,3 +40,7 @@
   border: 0;
   border-top: 1px solid var(--bg-raised);
 }
+.home-recent-link {
+  text-decoration: none;
+  color: var(--text-primary);
+}

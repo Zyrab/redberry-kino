@@ -10,6 +10,7 @@ import { api } from "../../utils/api";
 import Slider from "./slider";
 import SectionHeader from "./section-header";
 import { useAuth } from "../../context/auth-context";
+import { useNavigate, Link } from "react-router";
 
 function Home() {
   const { nowPlaying, featured, comingSoon, loading, error } = useHomeMovies();
@@ -18,6 +19,7 @@ function Home() {
 
   const { openAuthModal } = useAuth();
 
+  const navigate = useNavigate();
   const isNotified = (movie) => notified[movie.slug] ?? movie.isNotified;
 
   function handleBuy(movie) {
@@ -55,7 +57,7 @@ function Home() {
                 <SectionHeader title="Recently Viewed" />
                 <div className="movie-row">
                   {recent.map((movie) => (
-                    <Link key={movie.id} to={`/movies/${movie.id}`} className="home-recent-link">
+                    <Link key={movie.id} to={`/movies/${movie.slug}`} className="home-recent-link">
                       <MovieCard variant="small" data={movie} />
                     </Link>
                   ))}
