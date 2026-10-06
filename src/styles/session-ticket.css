@@ -1,0 +1,87 @@
+/* styles/session-ticket.css */
+.session {
+  display: flex;
+  align-items: stretch;
+  width: 200px;
+  height: 80px;
+  padding: 0;
+  background-color: var(--bg-page);
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: box-shadow 0.25s ease-in-out;
+}
+.session:hover:not(:disabled) {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.session:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.session-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+}
+.session-tags {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-secondary);
+}
+.session-format {
+  padding: 0 var(--space-sm);
+  background-color: var(--bg-raised);
+  border-radius: 999px;
+}
+
+/* dotted tear line with the two ticket notches (same colour as the hall card behind) */
+.session-divider {
+  position: relative;
+  width: 0;
+  border-left: 2px dotted var(--text-primary);
+}
+.session-divider::before,
+.session-divider::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+}
+.session-divider::before {
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.session-divider::after {
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
+
+.session-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 88px;
+  padding: var(--space-sm);
+}
+.session-price {
+  color: var(--color-red);
+}
+.session-seats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
