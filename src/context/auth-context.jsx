@@ -62,10 +62,13 @@ export function AuthProvider({ children }) {
   const openAuthModal = (mode = "login", onSuccess) => setModal({ mode, onSuccess });
   const closeAuthModal = useCallback(() => setModal(null), []);
   const switchMode = (mode) => setModal((m) => (m ? { ...m, mode } : m));
+  const requireAuth = () => (action) => (user ? action() : openAuthModal("login", action));
 
   const updateUser = setUser;
   return (
-    <AuthContext.Provider value={{ user, updateUser, loading, modal, login, register, logout, openAuthModal, closeAuthModal, switchMode }}>
+    <AuthContext.Provider
+      value={{ user, updateUser, loading, modal, login, register, logout, openAuthModal, closeAuthModal, switchMode, requireAuth }}
+    >
       {children}
     </AuthContext.Provider>
   );
