@@ -2,22 +2,31 @@
   margin-top: 120px;
   padding: 0 var(--space-2xl);
 
-  header {
+  .sessions-header {
     margin-bottom: var(--space-xl);
     p {
       color: var(--text-secondary);
       margin-top: 6px;
     }
   }
+  .sessions-body {
+    display: flex;
+    gap: var(--space-2xl);
+  }
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 .filters {
   position: sticky;
-  top: 96px;
+  top: 10px;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
   width: 320px;
+  max-height: calc(100vh - 20px);
+  overflow-y: auto;
+  scrollbar-width: none;
   padding: var(--space-lg);
   background-color: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -103,7 +112,96 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
+  button {
+    width: 100%;
+  }
 }
 .filters-count {
   color: var(--text-secondary);
+}
+
+.sessions-list {
+  flex: 1;
+  min-width: 0;
+
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+
+    label {
+      color: var(--text-secondary);
+    }
+    select {
+      padding: 0 var(--space-sm);
+      background: var(--bg-page);
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+  }
+
+  .list-groups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    transition: opacity 0.2s ease-in-out;
+
+    &.is-loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  .list-state {
+    color: var(--text-secondary);
+  }
+}
+
+.session-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--bg-raised);
+
+  .session-group-content {
+    display: flex;
+    flex: 1;
+    gap: var(--space-md);
+    min-width: 0;
+    .session-group-poster {
+      width: 56px;
+      height: 80px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .session-group-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      a {
+        color: var(--text-primary);
+        text-decoration: none;
+        margin-right: var(--space-md);
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .session-group-duration {
+        color: var(--text-secondary);
+      }
+    }
+  }
+
+  .session-group-times {
+    display: flex;
+    gap: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
 }
