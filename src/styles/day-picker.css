@@ -1,28 +1,47 @@
-/* styles/day-picker.css */
 .day-picker {
   display: flex;
   gap: var(--space-sm);
+  overflow-x: auto;
+}
+.day-picker {
+  scrollbar-width: none;
+}
+.day-picker::-webkit-scrollbar {
+  display: none;
 }
 .day-picker-item {
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  width: 76px;
-  height: 76px;
   background-color: var(--bg-card);
   border: 0;
-  border-radius: var(--radius-lg);
   color: var(--text-primary);
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+}
+.day-picker-item-big {
+  border-radius: var(--radius-lg);
+  width: 80px;
+  height: 80px;
+  transition: width 0.2s ease-in-out;
+}
+.day-picker-item-small {
+  border-radius: var(--radius-md);
+  background-color: var(--bg-raised);
+  width: 37px;
+  height: 54px;
 }
 .day-picker-item:hover:not(:disabled):not(.is-active) {
   background-color: var(--bg-raised);
 }
 .day-picker-item.is-active {
   background-color: var(--color-red);
+}
+.day-picker-item-big.is-active {
+  width: 109px;
 }
 .day-picker-item:disabled {
   color: var(--text-disabled);
