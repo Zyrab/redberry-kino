@@ -62,7 +62,7 @@ export function AuthProvider({ children }) {
   const openAuthModal = (mode = "login", onSuccess) => setModal({ mode, onSuccess });
   const closeAuthModal = useCallback(() => setModal(null), []);
   const switchMode = (mode) => setModal((m) => (m ? { ...m, mode } : m));
-  const requireAuth = () => (action) => (user ? action() : openAuthModal("login", action));
+  const requireAuth = (action) => (user ? action() : openAuthModal("login", action));
 
   const updateUser = setUser;
   return (
