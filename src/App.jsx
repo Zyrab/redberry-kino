@@ -3,7 +3,7 @@ import Layout from "./components/layout/layout";
 import Home from "./pages/home";
 import MyProfile from "./pages/my-profile";
 import Movie from "./pages/movies";
-// import Sessions from "./pages/sessions";
+import Sessions from "./pages/sessions";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/movies/:slug" element={<Movie />} />
-        {/* <Route path="/sessions" element={<Sessions />} /> */}
+        <Route path="/sessions" element={<Sessions />} />
       </Route>
     </Routes>
   );
