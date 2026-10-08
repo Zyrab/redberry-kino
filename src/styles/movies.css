@@ -1,19 +1,17 @@
-/* styles/movies.css */
 .movie-page-state {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-md);
-  padding: 160px var(--space-2xl) var(--space-2xl); /* clears the fixed navbar */
+  padding: 160px var(--space-2xl) var(--space-2xl);
 }
 
-/* ---------- hero ---------- */
 .movie-hero {
   position: relative;
   display: flex;
   align-items: flex-end;
   min-height: 480px;
-  padding: 120px var(--space-2xl) var(--space-xl); /* top clears the transparent navbar */
+  padding: 120px var(--space-2xl) var(--space-xl);
   background-size: cover;
   background-position: center;
 }
@@ -49,7 +47,6 @@
   gap: var(--space-sm);
 }
 
-/* ---------- body ---------- */
 .movie-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
@@ -58,14 +55,13 @@
   padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
 }
 
-/* ---------- sessions ---------- */
 .movie-sessions {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
 }
 .movie-sessions-subtitle {
-  margin-top: calc(var(--space-sm) * -1); /* sits closer to the heading */
+  margin-top: calc(var(--space-sm) * -1);
   color: var(--text-secondary);
 }
 .movie-sessions-note {
@@ -97,7 +93,6 @@
   gap: var(--space-sm);
 }
 
-/* ---------- details ---------- */
 .movie-details {
   display: flex;
   flex-direction: column;

@@ -18,13 +18,11 @@
   max-width: 880px;
 }
 
-/* Save button: natural width, pill shape comes from Button */
 .personal-info > button[type="submit"] {
   align-self: flex-start;
   margin-top: var(--space-md);
 }
 
-/* Profile status banner */
 .profile-banner {
   display: flex;
   align-items: center;
@@ -41,13 +39,11 @@
   color: var(--color-green);
 }
 
-/* Age eligibility note under the date of birth */
 .profile-age {
-  margin-top: calc(var(--space-sm) * -1); /* pull it closer to the field above */
+  margin-top: calc(var(--space-sm) * -1);
   color: var(--text-secondary);
 }
 
-/* Form-level error and success messages */
 .profile-form-error {
   color: var(--color-red);
 }
