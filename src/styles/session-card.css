@@ -1,0 +1,63 @@
+.session-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: var(--space-xs);
+  width: 252px;
+  padding: var(--space-md);
+  background-color: var(--bg-raised);
+  border: 0;
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease-in-out;
+  .group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+  }
+  &:hover:not(:disabled) {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .format {
+    justify-self: end;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--bg-raised);
+    border-radius: 999px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+  }
+  .language {
+    color: var(--text-secondary);
+  }
+  .seats {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    justify-self: end;
+    color: var(--color-green);
+    line-height: 0%;
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .few-left {
+    color: var(--color-red);
+  }
+  .price {
+    justify-self: end;
+  }
+  &:disabled .session-card-seats {
+    color: var(--text-secondary);
+  }
+}
