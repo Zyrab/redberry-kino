@@ -1,13 +1,11 @@
-/* styles/session-ticket.css */
 .session {
   display: flex;
   align-items: stretch;
-  width: 200px;
   height: 80px;
   padding: 0;
   background-color: var(--bg-page);
   border: 0;
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   color: var(--text-primary);
   cursor: pointer;
   transition: box-shadow 0.25s ease-in-out;
@@ -26,6 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 124px;
   gap: var(--space-xs);
   padding: var(--space-sm);
 }
@@ -45,15 +44,14 @@
 .session-divider {
   position: relative;
   width: 0;
-  border-left: 2px dotted var(--text-primary);
+  border-left: 1.5px dashed var(--text-primary);
 }
 .session-divider::before,
 .session-divider::after {
   content: "";
   position: absolute;
-  left: 1px;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background-color: var(--bg-card);
 }
@@ -72,7 +70,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  width: 88px;
+  min-width: 88px;
   padding: var(--space-sm);
 }
 .session-price {
