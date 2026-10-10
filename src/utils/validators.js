@@ -3,6 +3,8 @@ import { toISODate } from "./dates";
 export const MIN_LENGTH = 3;
 export const NAME_MAX = 50;
 export const MIN_AGE = 12;
+export const CARD_LENGTH = 16;
+export const CVV_LENGTH = 3;
 
 export const AVATAR_TYPES = ["image/jpeg", "image/png", "image/webp"];
 export const AVATAR_MAX = 2 * 1024 * 1024;
@@ -33,6 +35,15 @@ export const MSG = {
   // Avatar
   avatarType: "Only JPG, PNG or WebP images are allowed",
   avatarSize: "Image must be 2MB or smaller",
+
+  // Checkout
+  cardRequired: "Card number is required",
+  cardInvalid: `Card number must be ${CARD_LENGTH} digits`,
+  expiryRequired: "Expiry date is required",
+  expiryFormat: "Use MM/YY",
+  expiryPast: "Card has expired",
+  cvvRequired: "CVV is required",
+  cvvInvalid: `CVV must be ${CVV_LENGTH} digits`,
 
   generic: "Something went wrong. Please try again.",
 };
@@ -103,6 +114,24 @@ export const rules = {
     if (v > todayISO()) return MSG.dobInvalid;
     if (yearsSince(v) < MIN_AGE) return MSG.dobTooYoung;
   },
+  cardNumber(v) {
+    const card = String(v ?? "").replace(/\s/g, "");
+    if (!card) return MSG.cardRequired;
+    if (!/^\d+$/.test(card) || card.length !== CARD_LENGTH) return MSG.cardInvalid;
+  },
+
+  expiry(v) {
+    if (blank(v)) return MSG.expiryRequired;
+    const m = v.match(/^(0[1-9]|1[0-2])\/(\d{2})$/);
+    if (!m) return MSG.expiryFormat;
+    const firstOfNextMonth = new Date(2000 + Number(m[2]), Number(m[1]), 1);
+    if (firstOfNextMonth <= new Date()) return MSG.expiryPast;
+  },
+
+  cvv(v) {
+    if (!v) return MSG.cvvRequired;
+    if (!new RegExp(`^\\d{${CVV_LENGTH}}$`).test(v)) return MSG.cvvInvalid;
+  },
 };
 
 export function validateAvatar(file) {
@@ -128,6 +157,15 @@ export const profileSchema = {
   fullName: rules.fullName,
   mobileNumber: rules.mobileNumber,
   dateOfBirth: rules.dateOfBirth,
+};
+
+export const checkoutSchema = {
+  fullName: rules.fullName,
+  email: rules.email,
+  mobileNumber: rules.mobileNumber,
+  cardNumber: rules.cardNumber,
+  expiry: rules.expiry,
+  cvv: rules.cvv,
 };
 
 export function validate(schema, values) {
