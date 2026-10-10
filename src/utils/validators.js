@@ -56,6 +56,8 @@ export function mapApiErrors(errors = {}) {
   return Object.fromEntries(Object.entries(errors).map(([field, messages]) => [field, [].concat(messages)[0]]));
 }
 
+export const apiMessage = (err) => (err.data?.errors ? Object.values(mapApiErrors(err.data.errors))[0] : err.data?.message || MSG.generic);
+
 export const normalizeMobile = (v) => String(v ?? "").replace(/\s/g, "");
 
 export const todayISO = () => toISODate(new Date());
