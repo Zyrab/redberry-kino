@@ -50,3 +50,86 @@
 .profile-saved {
   color: var(--color-green);
 }
+
+.tickets-list {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+
+  .ticket-card {
+    display: flex;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    .ticket-card-poster {
+      width: 100px;
+      height: 133px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .ticket-card-info {
+      padding: var(--space-md);
+      flex: 1;
+    }
+    .ticket-card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    .ticket-card-details {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 12px;
+      h5 {
+        color: var(--text-secondary);
+      }
+    }
+    .ticket-card-seats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      h5 {
+        color: var(--text-secondary);
+      }
+      span {
+        padding: var(--space-xs) var(--space-sm);
+        background-color: var(--tint-white);
+        border-radius: var(--radius-sm);
+      }
+    }
+    .ticket-card-actions {
+      display: flex;
+      width: 300px;
+      flex-direction: column;
+      padding-left: var(--space-lg);
+      justify-content: space-between;
+      border-left: 1px dashed var(--bg-raised);
+      h5,
+      h4 {
+        color: var(--text-secondary);
+      }
+      .ticket-card-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .ticket-card-refund,
+      button {
+        width: 100%;
+      }
+      .ticket-card-note {
+        margin-top: var(--space-sm);
+        text-align: center;
+        color: var(--text-secondary);
+      }
+      .ticket-card-error {
+        margin-top: var(--space-sm);
+        text-align: center;
+        color: var(--color-red);
+      }
+    }
+  }
+}
