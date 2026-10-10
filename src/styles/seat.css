@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
+  width: calc(52px * var(--seat-scale, 1));
+  height: calc(52px * var(--seat-scale, 1));
   padding: 0;
   border-radius: 10px;
   cursor: pointer;

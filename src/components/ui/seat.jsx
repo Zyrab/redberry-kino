@@ -2,7 +2,7 @@ import "../../styles/seat.css";
 
 export default function Seat({ seat, selected, onToggle }) {
   const { label, code, state } = seat;
-  if (state === "unavailable") return <span className="seat seat-gap" aria-hidden="true" />;
+  if (state === "unavailable") return null;
 
   const status = selected ? "selected" : state;
   return (
