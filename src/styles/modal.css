@@ -11,6 +11,12 @@
   animation: modal-fade 0.2s ease-out;
 }
 
+@supports (backdrop-filter: blur(1px)) {
+  .modal-overlay {
+    background-color: rgba(16, 16, 16, 0.3);
+    backdrop-filter: blur(8px);
+  }
+}
 .modal {
   position: relative;
   max-height: 90vh;
