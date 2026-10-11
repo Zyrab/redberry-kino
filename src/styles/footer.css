@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-xl) var(--space-2xl) 0;
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--bg-raised);
+
+  .footer-logo {
+    font-weight: 800;
+    letter-spacing: 0.02em;
+
+    span {
+      color: var(--color-red);
+    }
+  }
+
+  .footer-copy {
+    color: var(--text-secondary);
+  }
+}
