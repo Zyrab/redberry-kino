@@ -35,7 +35,12 @@ export default function Sessions({ movie, onSelect }) {
   const ageRestricted = user?.age != null && movie.ageRating && user.age < movie.ageRating.minAge;
   const totalSessions = venues.reduce((sum, v) => sum + v.sessions.length, 0);
 
-  const selectDate = (iso) => setSearchParams({ date: iso }, { replace: true });
+  const selectDate = (iso) => {
+    const next = new URLSearchParams(searchParams);
+    next.set("date", iso);
+    next.delete("session");
+    setSearchParams(next, { replace: true });
+  };
 
   return (
     <section className="movie-sessions">
@@ -51,6 +56,11 @@ export default function Sessions({ movie, onSelect }) {
 
           {loading && <p className="movie-sessions-note text-body-m">Loading sessions...</p>}
           {error && <p className="movie-sessions-note text-body-m">Couldn't load sessions. Please try again.</p>}
+          {ageRestricted && (
+            <p className="field-message text-body-m">
+              This film is rated {movie.ageRating.minAge}+. You cannot buy tickets for it with this account.
+            </p>
+          )}
           {!loading && !error && totalSessions === 0 && <p className="movie-sessions-note text-body-m">No sessions on this date.</p>}
 
           {!loading &&
@@ -69,7 +79,7 @@ export default function Sessions({ movie, onSelect }) {
                             session={s}
                             disabled={s.isSoldOut || ageRestricted}
                             title={ageRestricted ? movie.ageRating.description : undefined}
-                            onClick={() => onSelect(s)}
+                            onClick={() => onSelect(s.id)}
                           />
                         ))}
                       </div>

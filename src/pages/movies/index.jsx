@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import Button from "../../components/ui/button";
 import useMovie from "../../hooks/use-movie";
 import { useAuth } from "../../context/auth-context";
@@ -10,16 +10,23 @@ import "../../styles/movies.css";
 import MovieDetails from "./details";
 import MoviesHero from "./hero";
 import Sessions from "./sessions";
+import BookingModal from "../../components/booking/booking-modal";
 
 export default function Movies() {
   const { slug } = useParams();
   const { movie, loading, error } = useMovie(slug);
   const { requireAuth } = useAuth();
-  const [bookingSession, setBookingSession] = useState(null);
+  const [bookingSessionId, setBookingSessionId] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sessionId = searchParams.get("session");
 
   useEffect(() => {
     if (movie) addRecentlyViewed(movie);
   }, [movie]);
+
+  useEffect(() => {
+    if (sessionId) setBookingSessionId(sessionId);
+  }, []);
 
   if (loading) return <div className="movie-page-state text-body-l">Loading...</div>;
 
@@ -32,17 +39,30 @@ export default function Movies() {
     );
   }
 
-  // guests get the login modal first, then the same action continues automatically
-  const handleSelect = (session) => requireAuth(() => setBookingSession(session));
+  function openBooking(sId) {
+    requireAuth(() => {
+      const next = new URLSearchParams(searchParams);
+      next.set("session", sId);
+      setSearchParams(next);
+      setBookingSessionId(sId);
+    });
+  }
+
+  const closeBooking = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("session");
+    setSearchParams(next, { replace: true });
+    setBookingSessionId(null);
+  };
 
   return (
     <div className="movie-page">
       <MoviesHero movie={movie} />
       <div className="movie-body">
-        <Sessions movie={movie} onSelect={handleSelect} />
+        <Sessions movie={movie} onSelect={openBooking} />
         <MovieDetails movie={movie} />
       </div>
-      {/* TODO: {bookingSession && <BookingModal session={bookingSession} onClose={() => setBookingSession(null)} />} */}
+      {bookingSessionId && <BookingModal sessionId={bookingSessionId} onClose={closeBooking} />}
     </div>
   );
 }
