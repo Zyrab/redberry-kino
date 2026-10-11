@@ -1,15 +1,18 @@
 import "../../styles/seat.css";
 
 export default function Seat({ seat, selected, onToggle }) {
-  const { label, code, state } = seat;
+  const { label, code, state, isMine } = seat;
   if (state === "unavailable") return null;
 
-  const status = selected ? "selected" : state;
+  const mine = state === "held" && isMine;
+  const selectable = state === "available" || mine;
+  const status = selected ? "selected" : mine ? "available" : state;
+
   return (
     <button
       type="button"
-      className={`seat seat-${status} text-h3`}
-      disabled={state !== "available"}
+      className={`seat seat-${status} text-label-m`}
+      disabled={!selectable}
       aria-pressed={selected}
       aria-label={`Seat ${code}, ${status}`}
       onClick={() => onToggle(seat)}
