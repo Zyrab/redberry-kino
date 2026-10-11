@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router";
+import { useSearchParams, useNavigate, useLocation } from "react-router";
 
 import { useAuth } from "../../context/auth-context";
 import useTickets from "../../hooks/use-tickets";
@@ -21,8 +21,14 @@ export default function MyProfile() {
   const param = searchParams.get("tab");
   const tab = TAB_IDS.includes(param) ? param : "profile";
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
-    if (!loading && !user) openAuthModal("login");
+    if (loading || user) return;
+    const back = location.pathname + location.search;
+    navigate("/", { replace: true });
+    openAuthModal("login", () => navigate(back));
   }, [loading, user]);
 
   if (loading || !user) return null;
