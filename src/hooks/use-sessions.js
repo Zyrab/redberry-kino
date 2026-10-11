@@ -14,6 +14,5 @@ export default function useSessions(query) {
       ignore = true;
     };
   }, [query]);
-  console.log(state);
   return state;
 }
